@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:tns="http://example.com/soap/calculator"
+           targetNamespace="http://example.com/soap/calculator" 
+           elementFormDefault="qualified">
+
+    <xs:element name="calculatorRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="number1" type="xs:double"/>
+                <xs:element name="number2" type="xs:double"/>
+                <xs:element name="operation" type="tns:operation"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="calculatorResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="operation">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ADD"/>
+            <xs:enumeration value="SUBTRACT"/>
+            <xs:enumeration value="MULTIPLY"/>
+            <xs:enumeration value="DIVIDE"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

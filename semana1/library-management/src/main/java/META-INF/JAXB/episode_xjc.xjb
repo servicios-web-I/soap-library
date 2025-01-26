@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb">
+  <!--
+
+Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.2 
+Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2025.01.22 a las 10:19:27 AM PET 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://example.com/soap/library">
+    <schemaBindings map="false">
+      <package name="com.example.soap.library"/>
+    </schemaBindings>
+    <bindings scd="tns:addBookRequest">
+      <class ref="com.example.soap.library.AddBookRequest"/>
+    </bindings>
+    <bindings scd="tns:addBookResponse">
+      <class ref="com.example.soap.library.AddBookResponse"/>
+    </bindings>
+    <bindings scd="~tns:book">
+      <class ref="com.example.soap.library.Book"/>
+    </bindings>
+    <bindings scd="tns:getBookRequest">
+      <class ref="com.example.soap.library.GetBookRequest"/>
+    </bindings>
+    <bindings scd="tns:getBookResponse">
+      <class ref="com.example.soap.library.GetBookResponse"/>
+    </bindings>
+    <bindings scd="tns:getAllBooksRequest">
+      <class ref="com.example.soap.library.GetAllBooksRequest"/>
+    </bindings>
+    <bindings scd="tns:getAllBooksResponse">
+      <class ref="com.example.soap.library.GetAllBooksResponse"/>
+    </bindings>
+    <bindings scd="tns:updateBookRequest">
+      <class ref="com.example.soap.library.UpdateBookRequest"/>
+    </bindings>
+    <bindings scd="tns:updateBookResponse">
+      <class ref="com.example.soap.library.UpdateBookResponse"/>
+    </bindings>
+    <bindings scd="tns:deleteBookRequest">
+      <class ref="com.example.soap.library.DeleteBookRequest"/>
+    </bindings>
+    <bindings scd="tns:deleteBookResponse">
+      <class ref="com.example.soap.library.DeleteBookResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+

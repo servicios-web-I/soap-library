@@ -1,0 +1,8 @@
+
+Driver Class: org.h2.Driver
+JDBC URL: jdbc:h2:mem:gestion_estudiantes
+User Name:sa
+
+SHOW TABLES;
+
+SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'nombre_tabla';

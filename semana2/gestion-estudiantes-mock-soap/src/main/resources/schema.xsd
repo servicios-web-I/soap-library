@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/gestionestudiantes"
+           xmlns:tns="http://example.com/gestionestudiantes"
+           elementFormDefault="qualified">
+
+    <!-- Definición de tipos -->
+    <xs:element name="RegistrarEstudianteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+                <xs:element name="email" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="RegistrarEstudianteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="estudianteId" type="xs:int"/>
+                <xs:element name="mensaje" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="InscribirCursoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="estudianteId" type="xs:int"/>
+                <xs:element name="cursoId" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="InscribirCursoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mensaje" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="SubirCalificacionRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="estudianteId" type="xs:int"/>
+                <xs:element name="cursoId" type="xs:int"/>
+                <xs:element name="calificacion" type="xs:float"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="SubirCalificacionResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mensaje" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ConsultarCalificacionesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="estudianteId" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ConsultarCalificacionesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="calificacion" type="tns:Calificacion" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Calificacion">
+        <xs:sequence>
+            <xs:element name="cursoId" type="xs:int"/>
+            <xs:element name="calificacion" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

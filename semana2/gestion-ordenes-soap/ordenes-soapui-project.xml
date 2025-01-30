@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="63d61a11-50c6-4edd-8476-60fd92f9e3c7" activeEnvironment="Default" name="ordenes" resourceRoot="" soapui-version="5.8.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="f4529920-9a0b-4699-8670-86a21f115479" wsaVersion="NONE" name="OrdenesPortSoap11" type="wsdl" bindingName="{http://example.com/gestionordenes}OrdenesPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/ordenes.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/ordenes.wsdl"><con:part><con:url>http://localhost:8080/ws/ordenes.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://example.com/gestionordenes" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://example.com/soap/gestionordenes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://example.com/gestionordenes">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://example.com/soap/gestionordenes" xmlns:tns="http://example.com/soap/gestionordenes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <!--Producto type definition-->
+      <xs:complexType name="producto">
+        <xs:sequence>
+          <xs:element name="nombre" type="xs:string"/>
+          <xs:element name="precio" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--Orden type definition-->
+      <xs:complexType name="orden">
+        <xs:sequence>
+          <xs:element name="id" type="xs:long"/>
+          <xs:element name="cliente" type="xs:string"/>
+          <xs:element name="total" type="xs:double"/>
+          <xs:element maxOccurs="unbounded" name="productos" type="tns:producto"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--Request for creating orders-->
+      <xs:element name="crearOrdenRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="cliente" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" name="productos" type="tns:producto"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Response for creating orders-->
+      <xs:element name="crearOrdenResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ordenId" type="xs:long"/>
+            <xs:element name="cliente" type="xs:string"/>
+            <xs:element name="total" type="xs:double"/>
+            <xs:element maxOccurs="unbounded" name="productos" type="tns:producto"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Request for listing orders-->
+      <xs:element name="listarOrdenesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="clienteId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Response for listing orders-->
+      <xs:element name="listarOrdenesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="ordenes" type="tns:orden"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="crearOrdenRequest">
+    <wsdl:part element="sch:crearOrdenRequest" name="crearOrdenRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listarOrdenesResponse">
+    <wsdl:part element="sch:listarOrdenesResponse" name="listarOrdenesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="crearOrdenResponse">
+    <wsdl:part element="sch:crearOrdenResponse" name="crearOrdenResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listarOrdenesRequest">
+    <wsdl:part element="sch:listarOrdenesRequest" name="listarOrdenesRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="OrdenesPort">
+    <wsdl:operation name="crearOrden">
+      <wsdl:input message="tns:crearOrdenRequest" name="crearOrdenRequest"></wsdl:input>
+      <wsdl:output message="tns:crearOrdenResponse" name="crearOrdenResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarOrdenes">
+      <wsdl:input message="tns:listarOrdenesRequest" name="listarOrdenesRequest"></wsdl:input>
+      <wsdl:output message="tns:listarOrdenesResponse" name="listarOrdenesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrdenesPortSoap11" type="tns:OrdenesPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="crearOrden">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="crearOrdenRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="crearOrdenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarOrdenes">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="listarOrdenesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listarOrdenesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrdenesPortService">
+    <wsdl:port binding="tns:OrdenesPortSoap11" name="OrdenesPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="35964f63-1d3e-4df3-8dc2-7a118ed1f26b" isOneWay="false" action="" name="crearOrden" bindingOperationName="crearOrden" type="Request-Response" outputName="crearOrdenResponse" inputName="crearOrdenRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="36da716e-baa3-4953-a57a-5e9537dc44de" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://example.com/soap/gestionordenes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ges:crearOrdenRequest>
+         <ges:cliente>Juan Pérez</ges:cliente>
+         <!--1 or more repetitions:-->
+         <ges:productos>
+            <ges:nombre>Producto 1</ges:nombre>
+            <ges:precio>150.50</ges:precio>
+         </ges:productos>
+      </ges:crearOrdenRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://example.com/gestionordenes/OrdenesPort/crearOrdenRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="91a3f10f-3b26-44cf-87c9-d69781097ae4" isOneWay="false" action="" name="listarOrdenes" bindingOperationName="listarOrdenes" type="Request-Response" outputName="listarOrdenesResponse" inputName="listarOrdenesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d0a43f9e-91f1-408b-ae19-82234fadc691" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://example.com/soap/gestionordenes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ges:crearOrdenRequest>
+         <!-- Nombre del cliente -->
+         <ges:cliente>Juan Pérez</ges:cliente>
+         <!-- Lista de productos -->
+         <ges:productos>
+            <ges:nombre>Producto 1</ges:nombre>
+            <ges:precio>150.50</ges:precio>
+         </ges:productos>
+         <ges:productos>
+            <ges:nombre>Producto 2</ges:nombre>
+            <ges:precio>250.00</ges:precio>
+         </ges:productos>
+      </ges:crearOrdenRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://example.com/gestionordenes/OrdenesPort/listarOrdenesRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb">
+  <!--
+
+Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.2 
+Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2025.01.26 a las 08:19:08 PM PET 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://example.com/gestionordenes">
+    <schemaBindings map="false">
+      <package name="com.example.gestionordenes"/>
+    </schemaBindings>
+    <bindings scd="tns:CrearOrdenRequest">
+      <class ref="com.example.gestionordenes.CrearOrdenRequest"/>
+    </bindings>
+    <bindings scd="~tns:Producto">
+      <class ref="com.example.gestionordenes.Producto"/>
+    </bindings>
+    <bindings scd="tns:CrearOrdenResponse">
+      <class ref="com.example.gestionordenes.CrearOrdenResponse"/>
+    </bindings>
+    <bindings scd="tns:ListarOrdenesRequest">
+      <class ref="com.example.gestionordenes.ListarOrdenesRequest"/>
+    </bindings>
+    <bindings scd="tns:ListarOrdenesResponse">
+      <class ref="com.example.gestionordenes.ListarOrdenesResponse"/>
+    </bindings>
+    <bindings scd="~tns:Orden">
+      <class ref="com.example.gestionordenes.Orden"/>
+    </bindings>
+  </bindings>
+</bindings>
+

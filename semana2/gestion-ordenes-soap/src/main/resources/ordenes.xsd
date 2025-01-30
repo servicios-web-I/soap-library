@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://example.com/soap/gestionordenes"
+           targetNamespace="http://example.com/soap/gestionordenes"
+           elementFormDefault="qualified">
+           
+     <!-- Producto type definition -->
+    <xs:complexType name="producto">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="precio" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Orden type definition -->
+    <xs:complexType name="orden">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="cliente" type="xs:string"/>
+            <xs:element name="productos" type="tns:producto" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Request for creating orders -->
+    <xs:element name="crearOrdenRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cliente" type="xs:string"/>
+                <xs:element name="productos" type="tns:producto" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Response for creating orders -->
+    <xs:element name="crearOrdenResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ordenId" type="xs:long"/>
+                <xs:element name="cliente" type="xs:string"/>
+                <xs:element name="productos" type="tns:producto" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Request for listing orders -->
+    <xs:element name="listarOrdenesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="clienteId" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Response for listing orders -->
+    <xs:element name="listarOrdenesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ordenes" type="tns:orden" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

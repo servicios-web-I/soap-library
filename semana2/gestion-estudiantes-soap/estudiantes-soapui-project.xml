@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://example.com/gestionestudiantes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ges:RegistrarEstudianteRequest>
+         <ges:nombre>Manuel Sanchez</ges:nombre>
+         <ges:email>manuel@example.com</ges:email>
+      </ges:RegistrarEstudianteRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

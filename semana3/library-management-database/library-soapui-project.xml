@@ -210,7 +210,7 @@
    <soapenv:Header/>
    <soapenv:Body>
       <lib:deleteBookRequest>
-         <lib:id>2</lib:id>
+         <lib:id>1</lib:id>
       </lib:deleteBookRequest>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://example.com/soap/library/LibraryPort/deleteBookRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="b73a9ac0-4189-4aad-b754-fe7a775c1c3a" isOneWay="false" action="" name="getAllBooks" bindingOperationName="getAllBooks" type="Request-Response" outputName="getAllBooksResponse" inputName="getAllBooksRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1a840171-5825-4424-8ada-e4c50bcc93fc" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://example.com/soap/library">

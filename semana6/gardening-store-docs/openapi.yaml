@@ -1,0 +1,155 @@
+openapi: 3.0.0
+info:
+  title: Gardening Store API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /categories:
+    get:
+      summary: Get All Categories
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create Category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              example:
+                name: Herramientas
+      responses:
+        '201':
+          description: Created
+  /categories/{id}:
+    delete:
+      summary: Delete Category
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: No Content
+  /products:
+    get:
+      summary: Get All Products
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create Product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: number
+                category:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+              example:
+                name: Pala
+                price: 10.5
+                category:
+                  id: 1
+      responses:
+        '201':
+          description: Created
+  /products/category/{id}:
+    get:
+      summary: Get Products by Category
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  /orders:
+    get:
+      summary: Get All Orders
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create Order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                customer:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                products:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+              example:
+                id:
+                  id: 1
+                customer:
+                  id: 1
+                products:
+                  - id: 1
+      responses:
+        '201':
+          description: Created
+  /orders/customer/{id}:
+    get:
+      summary: Get Orders by Customer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  /customers:
+    post:
+      summary: Create Customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+              example:
+                name: Juan Perez
+                email: juan.perez@example.com
+      responses:
+        '201':
+          description: Created

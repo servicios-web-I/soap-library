@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "56a6b9ce-f444-4818-b71c-afc45f53b0c5",
+		"name": "Builder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12581968"
+	},
+	"item": [
+		{
+			"name": "crear persona",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Juan\",\r\n    \"edad\": 30,\r\n    \"direccion\": \"Calle 123\",\r\n    \"telefono\": \"555-1234\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/persona",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

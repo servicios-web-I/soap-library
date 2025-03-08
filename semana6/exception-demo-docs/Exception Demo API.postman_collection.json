@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "688e65a5-f88c-4e1e-86ff-456cd3843676",
+		"name": "Exception Demo API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12581968"
+	},
+	"item": [
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "Get File (Checked Exception)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/files/inexistente.txt",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"files",
+								"inexistente.txt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Process File (Unchecked Exception)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/files/process",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"files",
+								"process"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

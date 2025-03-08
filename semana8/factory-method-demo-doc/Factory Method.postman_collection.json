@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "45a3be20-bcd3-4428-96fa-88690acc761d",
+		"name": "Factory Method",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12581968"
+	},
+	"item": [
+		{
+			"name": "ObtenerTipoCoche",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehiculo/coche",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehiculo",
+						"coche"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

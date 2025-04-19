@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "b2226eec-a688-429f-99b1-86881c127076",
+		"name": "Cifrado Simétrico y Asimétrico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12581968"
+	},
+	"item": [
+		{
+			"name": "Obtener claves RSA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/crypto/rsa/keys",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"crypto",
+						"rsa",
+						"keys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cifrar mensaje con AES",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"message\": \"Hola desde AES\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/crypto/aes/encrypt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"crypto",
+						"aes",
+						"encrypt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Descifrar mensaje AES",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"encrypted\": \"L2gdxg0LF089w+WBTwXT0g==\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/crypto/aes/decrypt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"crypto",
+						"aes",
+						"decrypt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cifrar mensaje con RSA",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"message\": \"Este es un secreto\",\r\n  \"publicKey\": \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApetWKkiz1gQ7uvMScw8bxPi6Xps9wH2jPnGPVdTfoBrnWQXRVUim2VxraVC10OFjsmmDr3VJz+XD79AnCUeI2FBdvFxjtkizI5BoSAkcaj/h9HwWNWi/4Od4Ax0hpCceT9gLvMWDS2EW9EWMvEachtaA8TgijnL9ew578HA6n1ek2UwWXKQZx7MoMz6dxMLpWGDvToiSt2MAItLwsnRVBadBHmA1ePTXS+qAhsfFch/i/algDf2dkuvHk3MUqbxkecq5u/KHeGHVS8uwRlZy/yhh+00bvQQU3KrOXqSRA6RfGF5dKROuFvSgBfNbXw+55KLfJTCrueao3D7XjCtCUQIDAQAB\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/crypto/rsa/encrypt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"crypto",
+						"rsa",
+						"encrypt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Descifrar mensaje con RSA",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"encrypted\": \"gMEszuu9pJPaIcwdy/ZlvmiCdUcL+An93P7cp9/VhOyFAsrYDYM//Soa8debKTSIPlSXe+bJRezVAccmM3konscaStcWL7I/GIjjkaiHW8AsDggi9KZqHM/+YxI+uKCURqvuIfQ6hnCCVn5jDgLxH5LDHdKFAw+wZJsaScKlOAG/Ns/AT/38co2O4tzsX0tZQ+mx8GEEb18nCycKjBPi0pV1q2asc0ZDe06YPvgN4hm+Nwm+8WV/vIWGh5zvFzRt2gCFSr4ACLMYzJ07qU2wJjaE3FcfbWdA21mZxjUUlDE1/LMWFvaeIbrkybg3CgOaBB+1WpQdm8u57tIhaueO8w==\",\r\n  \"privateKey\": \"MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCl61YqSLPWBDu68xJzDxvE+Lpemz3AfaM+cY9V1N+gGudZBdFVSKbZXGtpULXQ4WOyaYOvdUnP5cPv0CcJR4jYUF28XGO2SLMjkGhICRxqP+H0fBY1aL/g53gDHSGkJx5P2Au8xYNLYRb0RYy8RpyG1oDxOCKOcv17DnvwcDqfV6TZTBZcpBnHsygzPp3EwulYYO9OiJK3YwAi0vCydFUFp0EeYDV49NdL6oCGx8VyH+L9qWAN/Z2S68eTcxSpvGR5yrm78od4YdVLy7BGVnL/KGH7TRu9BBTcqs5epJEDpF8YXl0pE64W9KAF81tfD7nkot8lMKu55qjcPteMK0JRAgMBAAECggEACQex8cURTw/9y3jiV5tiVbX7CC47JhZcZ6gM7tUiKtu9/LgKpqForcaoNKQTMiQrLbUNCQQJVXCWCW+u6TQQykOU920AkwWZxNEtoMKIrq5tgvWsLIHYBBK68xHvQFit71bk/CQUh0ooYnjkzgQqjZLf84jsZgvzeGKfW5STFzQKnLxLs5lQYInX8mDZ4jxsmty1gcRBa9u82Dp+5AdWYPequv8kLN+yH82D81lch+ElZCWroTY0WuaR17Xlz3Ie3mqp4l2jcBjUllmo81+4M/pxb5aWwzVD+IcQZ8pYWGA5lDlhkxHxi+p8q6rKf5pFksN9kwVM+S3ukqWaUw7pIQKBgQC+hpk3QpdYb9HkQOc4LaHkfuTgj+9808ft+IpwUC0++oNlOWr1C4ysr212zhT7vbO1ZobwVSvDZpZ5e0gkcUz6BWgEgkRRsF8u6UVEofZYNEudFMLsoOGh4bWbUteEnve9WtvCSddJHvVJmO/OPvkes13EW06nlNABnN/3jNvqYQKBgQDe7/7Onpl8RKIseXfXfMsOOOW9KuSqq5tqTfc6bRcLnVVb5x7SmuAO+pcnb6f7NMn3Nd54XHAKAtqdTpOgXK936MtQJQx3X6kQdgVDALimFtPt5ylZ0NjvvsT0eH8Nlqwo17uGuIf56WuvkxHUxWt/DO4ud4zwYJzkAaoxj1q98QKBgQCQnPmOyCy4I6fc6KaYLYrENMzk5luRE+6c4hmyRikRtHQnUP2uIaYVLNKZarLioYrWFYw2v28IUcXFT53ii10yKQha48WXe5fDs6uv/H9PU+JQyIFrunGIvhlqW+bZ8w932o8TWZjfF3B2/G6IzaOpeduiPuvkpz96+efFrlT+AQKBgQCVymdIaOPzzSGyBENzdBPzEGO8gI935SndeVk91oJ/eU0bHOVm2Ezng5QAGVOiw8tX4MgD0wgskdJVk7A5NU1ooe/Jf7sqkgnEV6gdZuSqI/hthr4P7PV10JYBNN0ZQj2Wi60iTeZ/EkkahRScA7HAge2fJxB5ilCgGkZCWnG74QKBgQCqP3NFyxqNRKydtopZ6EvIPy/gDSYHJbuEcMnCGTp8/yKxy/c/7bNxfDz8lVUkAqNOwJU/7dElEaqHmjwLP+NbePtMJeQ3K8W71I1yl8Orqt/ZyA6PG5F4epSwoKg+l9vrXkOQqj/CK1IPejkjkjwNbQzb8s3JG5BxvBzEpKF2yw==\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/crypto/rsa/decrypt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"crypto",
+						"rsa",
+						"decrypt"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

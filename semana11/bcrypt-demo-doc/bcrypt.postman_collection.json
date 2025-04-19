@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "5e6a74d1-083b-4814-b3ff-d94cd8eda70d",
+		"name": "bcrypt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12581968"
+	},
+	"item": [
+		{
+			"name": "Encriptar contraseña",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verifica si la respuesta es exitosa (código 200)\r",
+							"if (pm.response.code === 200) {\r",
+							"    // Obtén el hash de la respuesta\r",
+							"    const hash = pm.response.text();\r",
+							"    \r",
+							"    // Guarda el hash en una variable de entorno\r",
+							"    pm.environment.set(\"bcrypt_hash\", hash);\r",
+							"    \r",
+							"    // Opcional: Imprime el hash en la consola de Postman para verificar\r",
+							"    console.log(\"Hash guardado:\", hash);\r",
+							"} else {\r",
+							"    console.error(\"Error en la respuesta:\", pm.response.text());\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"clave123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bcrypt/encrypt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bcrypt",
+						"encrypt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar contraseña",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"clave123\",\r\n  \"hash\": \"{{bcrypt_hash}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bcrypt/verify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bcrypt",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "41cee31c-85d7-41f0-862b-23a3a870a1f7",
+		"name": "Pdf",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12581968"
+	},
+	"item": [
+		{
+			"name": "Generar pdf",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pdf/generar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pdf",
+						"generar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

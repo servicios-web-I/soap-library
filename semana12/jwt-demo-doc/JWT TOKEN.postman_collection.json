@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "ae574552-310a-41fc-9f7d-d97ad3fba5a9",
+		"name": "JWT TOKEN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12581968"
+	},
+	"item": [
+		{
+			"name": "Login para obtener el Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"user\",\r\n  \"password\": \"1234\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usar el Token para acceder",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiZGVtby1hcHAiLCJpYXQiOjE3NDM3NTI3OTMsImV4cCI6MTc0Mzc1MjgwM30.L1WIyMKcHteXwJH6PyT4YF18iq6vW30TS_DZiSyziDU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/auth/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

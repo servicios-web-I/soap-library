@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="f235239d-2c2b-488a-a50a-39b55ac63845" activeEnvironment="Default" name="estudiantes" resourceRoot="" soapui-version="5.8.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="008f44a5-5280-4b4a-b9fb-d8705b767acf" wsaVersion="NONE" name="EstudiantePortSoap11" type="wsdl" bindingName="{http://ejemplo.com/estudiante}EstudiantePortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/estudiante.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/estudiante.wsdl"><con:part><con:url>http://localhost:8080/ws/estudiante.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://ejemplo.com/estudiante" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://ejemplo.com/estudiante" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ejemplo.com/estudiante">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://ejemplo.com/estudiante" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getEstudianteRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getEstudianteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="curso" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getEstudianteResponse">
+    <wsdl:part element="tns:getEstudianteResponse" name="getEstudianteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEstudianteRequest">
+    <wsdl:part element="tns:getEstudianteRequest" name="getEstudianteRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EstudiantePort">
+    <wsdl:operation name="getEstudiante">
+      <wsdl:input message="tns:getEstudianteRequest" name="getEstudianteRequest"></wsdl:input>
+      <wsdl:output message="tns:getEstudianteResponse" name="getEstudianteResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EstudiantePortSoap11" type="tns:EstudiantePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getEstudiante">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getEstudianteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEstudianteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EstudiantePortService">
+    <wsdl:port binding="tns:EstudiantePortSoap11" name="EstudiantePortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="062f304c-3a2e-4a78-be90-85376f900535" isOneWay="false" action="" name="getEstudiante" bindingOperationName="getEstudiante" type="Request-Response" outputName="getEstudianteResponse" inputName="getEstudianteRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f28accc0-afea-42d7-8bb5-4d81ab26ad84" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:est="http://ejemplo.com/estudiante">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <est:getEstudianteRequest>\r
+         <est:id>101</est:id>\r
+      </est:getEstudianteRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ejemplo.com/estudiante/EstudiantePort/getEstudianteRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

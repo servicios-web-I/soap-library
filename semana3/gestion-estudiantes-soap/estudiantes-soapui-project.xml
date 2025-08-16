@@ -1,10 +1,234 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://example.com/gestionestudiantes">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <ges:RegistrarEstudianteRequest>
-         <ges:nombre>Manuel Sanchez</ges:nombre>
-         <ges:email>manuel@example.com</ges:email>
-      </ges:RegistrarEstudianteRequest>
-   </soapenv:Body>
-</soapenv:Envelope>
+<con:soapui-project id="59757aa4-541d-4cbe-bb37-6358ab0a5391" activeEnvironment="Default" name="estudiantes" resourceRoot="" soapui-version="5.8.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="f3ed2bf9-377c-4cd3-a8d5-389d491f445a" wsaVersion="NONE" name="EstudiantePortSoap11" type="wsdl" bindingName="{http://example.com/gestionestudiantes}EstudiantePortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/estudiantes.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/estudiantes.wsdl"><con:part><con:url>http://localhost:8080/ws/estudiantes.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://example.com/gestionestudiantes" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://example.com/gestionestudiantes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://example.com/gestionestudiantes">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://example.com/gestionestudiantes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <!--Definición de tipos-->
+      <xs:element name="RegistrarEstudianteRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegistrarEstudianteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="estudianteId" type="xs:int"/>
+            <xs:element name="mensaje" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CrearCursoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CrearCursoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="cursoId" type="xs:int"/>
+            <xs:element name="mensaje" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InscribirCursoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="estudianteId" type="xs:int"/>
+            <xs:element name="cursoId" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InscribirCursoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="mensaje" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SubirCalificacionRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="estudianteId" type="xs:int"/>
+            <xs:element name="cursoId" type="xs:int"/>
+            <xs:element name="calificacion" type="xs:float"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SubirCalificacionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="mensaje" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ConsultarCalificacionesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="estudianteId" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ConsultarCalificacionesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="calificacion" type="tns:Calificacion"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Calificacion">
+        <xs:sequence>
+          <xs:element name="cursoId" type="xs:int"/>
+          <xs:element name="calificacion" type="xs:float"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="InscribirCursoRequest">
+    <wsdl:part element="tns:InscribirCursoRequest" name="InscribirCursoRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubirCalificacionResponse">
+    <wsdl:part element="tns:SubirCalificacionResponse" name="SubirCalificacionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RegistrarEstudianteRequest">
+    <wsdl:part element="tns:RegistrarEstudianteRequest" name="RegistrarEstudianteRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CrearCursoRequest">
+    <wsdl:part element="tns:CrearCursoRequest" name="CrearCursoRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarCalificacionesRequest">
+    <wsdl:part element="tns:ConsultarCalificacionesRequest" name="ConsultarCalificacionesRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RegistrarEstudianteResponse">
+    <wsdl:part element="tns:RegistrarEstudianteResponse" name="RegistrarEstudianteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CrearCursoResponse">
+    <wsdl:part element="tns:CrearCursoResponse" name="CrearCursoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InscribirCursoResponse">
+    <wsdl:part element="tns:InscribirCursoResponse" name="InscribirCursoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarCalificacionesResponse">
+    <wsdl:part element="tns:ConsultarCalificacionesResponse" name="ConsultarCalificacionesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubirCalificacionRequest">
+    <wsdl:part element="tns:SubirCalificacionRequest" name="SubirCalificacionRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EstudiantePort">
+    <wsdl:operation name="InscribirCurso">
+      <wsdl:input message="tns:InscribirCursoRequest" name="InscribirCursoRequest"></wsdl:input>
+      <wsdl:output message="tns:InscribirCursoResponse" name="InscribirCursoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubirCalificacion">
+      <wsdl:input message="tns:SubirCalificacionRequest" name="SubirCalificacionRequest"></wsdl:input>
+      <wsdl:output message="tns:SubirCalificacionResponse" name="SubirCalificacionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarEstudiante">
+      <wsdl:input message="tns:RegistrarEstudianteRequest" name="RegistrarEstudianteRequest"></wsdl:input>
+      <wsdl:output message="tns:RegistrarEstudianteResponse" name="RegistrarEstudianteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearCurso">
+      <wsdl:input message="tns:CrearCursoRequest" name="CrearCursoRequest"></wsdl:input>
+      <wsdl:output message="tns:CrearCursoResponse" name="CrearCursoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCalificaciones">
+      <wsdl:input message="tns:ConsultarCalificacionesRequest" name="ConsultarCalificacionesRequest"></wsdl:input>
+      <wsdl:output message="tns:ConsultarCalificacionesResponse" name="ConsultarCalificacionesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EstudiantePortSoap11" type="tns:EstudiantePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="InscribirCurso">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InscribirCursoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InscribirCursoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubirCalificacion">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SubirCalificacionRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SubirCalificacionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarEstudiante">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="RegistrarEstudianteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="RegistrarEstudianteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearCurso">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CrearCursoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CrearCursoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCalificaciones">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ConsultarCalificacionesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ConsultarCalificacionesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EstudiantePortService">
+    <wsdl:port binding="tns:EstudiantePortSoap11" name="EstudiantePortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="012db244-cc6e-4d74-8e15-c1a6f9881136" isOneWay="false" action="" name="ConsultarCalificaciones" bindingOperationName="ConsultarCalificaciones" type="Request-Response" outputName="ConsultarCalificacionesResponse" inputName="ConsultarCalificacionesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7f5c07a7-9104-4df0-a32f-4ca5b35910ac" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://example.com/gestionestudiantes">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:ConsultarCalificacionesRequest>\r
+         <ges:estudianteId>1</ges:estudianteId>\r
+      </ges:ConsultarCalificacionesRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://example.com/gestionestudiantes/EstudiantePort/ConsultarCalificacionesRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="566ddf19-7c6c-4170-997c-957272fc3cb1" isOneWay="false" action="" name="CrearCurso" bindingOperationName="CrearCurso" type="Request-Response" outputName="CrearCursoResponse" inputName="CrearCursoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="78e5044b-b729-4831-9588-634741d488a4" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://example.com/gestionestudiantes">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:CrearCursoRequest>\r
+         <ges:nombre>Literatura</ges:nombre>\r
+      </ges:CrearCursoRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://example.com/gestionestudiantes/EstudiantePort/CrearCursoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="1e5b8c0c-2bb6-4361-ba07-a0dd55cfb145" isOneWay="false" action="" name="InscribirCurso" bindingOperationName="InscribirCurso" type="Request-Response" outputName="InscribirCursoResponse" inputName="InscribirCursoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c16ff71d-1c25-4c76-b829-a9a7f242b530" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://example.com/gestionestudiantes">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:InscribirCursoRequest>\r
+         <ges:estudianteId>1</ges:estudianteId>\r
+         <ges:cursoId>1</ges:cursoId>\r
+      </ges:InscribirCursoRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://example.com/gestionestudiantes/EstudiantePort/InscribirCursoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="69e4d34e-591f-4c9c-8795-bd3813f9cd3a" isOneWay="false" action="" name="RegistrarEstudiante" bindingOperationName="RegistrarEstudiante" type="Request-Response" outputName="RegistrarEstudianteResponse" inputName="RegistrarEstudianteRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a0cf5424-e8d1-4ddf-9f8d-5fe2577e714a" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://example.com/gestionestudiantes">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:RegistrarEstudianteRequest>\r
+         <ges:nombre>Ernesto De la Fuente</ges:nombre>\r
+         <ges:email>ernet@gmail.com</ges:email>\r
+      </ges:RegistrarEstudianteRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://example.com/gestionestudiantes/EstudiantePort/RegistrarEstudianteRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="fea76530-c175-499e-9511-bde91b177f8f" isOneWay="false" action="" name="SubirCalificacion" bindingOperationName="SubirCalificacion" type="Request-Response" outputName="SubirCalificacionResponse" inputName="SubirCalificacionRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c3e15695-1f4c-4579-8cba-aa149a3b4401" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://example.com/gestionestudiantes">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:SubirCalificacionRequest>\r
+         <ges:estudianteId>1</ges:estudianteId>\r
+         <ges:cursoId>1</ges:cursoId>\r
+         <ges:calificacion>20</ges:calificacion>\r
+      </ges:SubirCalificacionRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://example.com/gestionestudiantes/EstudiantePort/SubirCalificacionRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

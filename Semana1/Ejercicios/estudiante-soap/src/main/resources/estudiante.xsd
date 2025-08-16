@@ -1,0 +1,6 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   targetNamespace="http://ejemplo.com/estudiante"
+           xmlns:tns="http://ejemplo.com/estudiante"
+           elementFormDefault="qualified">
+
+</xs:schema>
